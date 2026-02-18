@@ -1,0 +1,17 @@
+.custom-navbar {
+  background-color: #58ff56; /* dark blue-gray like screenshot */
+  height: 60px;
+}
+
+.navbar-brand {
+  font-size: 1.2rem;
+}
+
+.nav-link {
+  font-weight: 500;
+  transition: 0.2s ease;
+}
+
+.nav-link:hover {
+  opacity: 0.8;
+}
