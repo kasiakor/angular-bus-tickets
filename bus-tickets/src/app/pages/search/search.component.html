@@ -1,1 +1,85 @@
-<p>search works!</p>
+<div class="search-page d-flex align-items-center">
+  <div class="container">
+    <div class="row justify-content-center">
+      <div class="col-12 col-md-10 col-lg-8 col-xl-7">
+        <div class="card booking-card shadow">
+          <div class="card-body p-4 p-md-5">
+            <!-- Title -->
+            <div
+              class="d-flex align-items-center justify-content-center gap-2 mb-4"
+            >
+              <i class="fa fa-ticket title-icon" aria-hidden="true"></i>
+              <h2 class="m-0 booking-title">Book Your Bus Ticket</h2>
+            </div>
+
+            <form>
+              <div class="row g-3">
+                <!-- From -->
+                <div class="col-12 col-md-6">
+                  <label class="form-label field-label">
+                    <i
+                      class="fa fa-map-marker label-icon"
+                      aria-hidden="true"
+                    ></i>
+                    From
+                  </label>
+                  <select class="form-select form-control-lg soft-input">
+                    <option selected>Select city</option>
+                    @for (item of locations; track $index) {
+                      <option [value]="item.locationId">
+                        {{ item.locationName }}
+                      </option>
+                    }
+                  </select>
+                </div>
+
+                <!-- To -->
+                <div class="col-12 col-md-6">
+                  <label class="form-label field-label">
+                    <i
+                      class="fa fa-map-marker label-icon"
+                      aria-hidden="true"
+                    ></i>
+                    To
+                  </label>
+                  <select class="form-select form-control-lg soft-input">
+                    <option selected>Select city</option>
+                    @for (item of locations; track $index) {
+                      <option [value]="item.locationId">
+                        {{ item.locationName }}
+                      </option>
+                    }
+                  </select>
+                </div>
+
+                <!-- Date of Journey -->
+                <div class="col-12 col-md-6">
+                  <label class="form-label field-label">
+                    <i class="fa fa-calendar label-icon" aria-hidden="true"></i>
+                    Date of Journey
+                  </label>
+                  <input
+                    type="date"
+                    class="form-control form-control-lg soft-input"
+                    [attr.min]="today"
+                  />
+                </div>
+
+                <!-- Spacer like image -->
+                <div class="col-12 col-md-6 d-none d-md-block"></div>
+
+                <!-- Button -->
+                <div class="col-12 d-flex justify-content-center mt-3">
+                  <button type="button" class="btn btn-search px-5 py-2">
+                    <i class="fa fa-search me-2" aria-hidden="true"></i>
+                    Search Buses
+                  </button>
+                </div>
+              </div>
+            </form>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
