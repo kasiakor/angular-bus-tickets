@@ -23,8 +23,12 @@
                     ></i>
                     From
                   </label>
-                  <select class="form-select form-control-lg soft-input">
-                    <option selected>Select city</option>
+                  <select
+                    class="form-select form-control-lg soft-input"
+                    [(ngModel)]="searchObj.fromLocationId"
+                    name="fromLocationId"
+                  >
+                    <option selected>Select from city</option>
                     @for (item of locations; track $index) {
                       <option [value]="item.locationId">
                         {{ item.locationName }}
@@ -42,8 +46,12 @@
                     ></i>
                     To
                   </label>
-                  <select class="form-select form-control-lg soft-input">
-                    <option selected>Select city</option>
+                  <select
+                    class="form-select form-control-lg soft-input"
+                    [(ngModel)]="searchObj.toLocationId"
+                    name="toLocationId"
+                  >
+                    <option selected>Select to city</option>
                     @for (item of locations; track $index) {
                       <option [value]="item.locationId">
                         {{ item.locationName }}
@@ -62,6 +70,8 @@
                     type="date"
                     class="form-control form-control-lg soft-input"
                     [attr.min]="today"
+                    [(ngModel)]="searchObj.travelDate"
+                    name="travelDate"
                   />
                 </div>
 
@@ -70,7 +80,11 @@
 
                 <!-- Button -->
                 <div class="col-12 d-flex justify-content-center mt-3">
-                  <button type="button" class="btn btn-search px-5 py-2">
+                  <button
+                    type="button"
+                    class="btn btn-search px-5 py-2"
+                    (click)="onBusSearch()"
+                  >
                     <i class="fa fa-search me-2" aria-hidden="true"></i>
                     Search Buses
                   </button>
