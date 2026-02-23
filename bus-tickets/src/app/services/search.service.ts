@@ -1,7 +1,7 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
-import { IBus } from '../interfaces/bus.interface';
+import { IBusSearchResponse } from '../interfaces/search.interface';
 
 @Injectable({
   providedIn: 'root',
@@ -13,8 +13,8 @@ export class SearchService {
     fromLocation: number,
     toLocation: number,
     travelDate: string,
-  ): Observable<IBus> {
-    return this.http.get<IBus>(
+  ): Observable<IBusSearchResponse> {
+    return this.http.get<IBusSearchResponse>(
       'https://api.freeprojectapi.com/api/BusBooking/searchBus2?fromLocation=' +
         fromLocation +
         '&toLocation=' +

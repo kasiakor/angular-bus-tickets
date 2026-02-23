@@ -15,7 +15,7 @@ export const routes: Routes = [
     component: SearchComponent,
   },
   {
-    path: 'search-result',
+    path: 'search-result/:fromLocationId/:toLocationId/:travelDate',
     component: SearchResultComponent,
   },
   {

@@ -1,9 +1,9 @@
 import { Component, inject, OnInit } from '@angular/core';
 import { FormsModule } from '@angular/forms';
+import { Router } from '@angular/router';
 import { ILocation } from '../../interfaces/location.interface';
 import { ISearch } from '../../interfaces/search.interface';
 import { LocationService } from '../../services/location.service';
-import { SearchService } from '../../services/search.service';
 
 @Component({
   selector: 'app-search',
@@ -22,7 +22,7 @@ export class SearchComponent implements OnInit {
   };
 
   private locationService = inject(LocationService);
-  private searchService = inject(SearchService);
+  private router = inject(Router);
 
   ngOnInit(): void {
     this.loadAllLocations();
@@ -43,19 +43,11 @@ export class SearchComponent implements OnInit {
 
   onBusSearch() {
     console.log(this.searchObj);
-    this.searchService
-      .searchBus(
-        Number(this.searchObj.fromLocationId),
-        Number(this.searchObj.toLocationId),
-        this.searchObj.travelDate,
-      )
-      .subscribe({
-        next: (res) => {
-          console.log(res);
-        },
-        error: (err) => {
-          console.log(err);
-        },
-      });
+    this.router.navigate([
+      '/search-result',
+      this.searchObj.fromLocationId,
+      this.searchObj.toLocationId,
+      this.searchObj.travelDate,
+    ]);
   }
 }
