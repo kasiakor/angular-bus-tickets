@@ -13,8 +13,8 @@ export class SearchService {
     fromLocation: number,
     toLocation: number,
     travelDate: string,
-  ): Observable<IBusSearchResponse> {
-    return this.http.get<IBusSearchResponse>(
+  ): Observable<IBusSearchResponse[]> {
+    return this.http.get<IBusSearchResponse[]>(
       'https://api.freeprojectapi.com/api/BusBooking/searchBus2?fromLocation=' +
         fromLocation +
         '&toLocation=' +

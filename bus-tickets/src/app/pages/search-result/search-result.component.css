@@ -72,3 +72,128 @@
 .action-btn:hover {
   background-color: #16779f;
 }
+
+/* ===== EXTRA STYLES (paste under existing CSS) ===== */
+
+/* Stronger card separation */
+.result-card {
+  border: 1px solid rgba(29, 148, 195, 0.22) !important; /* #1d94c3 */
+  box-shadow: 0 10px 24px rgba(0, 0, 0, 0.08) !important;
+  background: #fff;
+}
+
+.result-card:hover {
+  border-color: rgba(29, 148, 195, 0.45) !important;
+  box-shadow: 0 16px 34px rgba(0, 0, 0, 0.12) !important;
+}
+
+/* Soft tinted background on hover (very light) */
+.result-card:hover .card-body {
+  background: linear-gradient(
+    0deg,
+    rgba(29, 148, 195, 0.04),
+    rgba(29, 148, 195, 0)
+  );
+  border-radius: 1rem; /* keeps the hover background rounded */
+}
+
+/* Add a subtle left accent line (no purple) */
+.result-card .card-body {
+  position: relative;
+}
+
+.result-card .card-body::before {
+  content: "";
+  position: absolute;
+  left: 0;
+  top: 12px;
+  bottom: 12px;
+  width: 5px;
+  border-radius: 999px;
+  background: linear-gradient(
+    180deg,
+    rgba(29, 148, 195, 1),
+    rgba(37, 255, 34, 1)
+  );
+  opacity: 0.9;
+}
+
+/* Make content not overlap the accent line */
+.result-card .card-body > .row {
+  padding-left: 10px;
+}
+
+/* Header buttons a bit more “designed” */
+.btn-outline-custom {
+  border-width: 2px;
+  border-radius: 999px;
+  font-weight: 600;
+  letter-spacing: 0.2px;
+}
+
+.btn-outline-custom:hover {
+  box-shadow: 0 10px 18px rgba(29, 148, 195, 0.2);
+}
+
+/* Bus icon: add glow + crisp border */
+.bus-icon {
+  border: 2px solid rgba(29, 148, 195, 0.3);
+  box-shadow: 0 10px 16px rgba(29, 148, 195, 0.18);
+}
+
+/* Rating badge: keep green but improve legibility */
+.rating-badge {
+  border: 1px solid rgba(0, 0, 0, 0.08);
+  box-shadow: 0 6px 14px rgba(37, 255, 34, 0.18);
+}
+
+/* Fast badge: sharpen and add small shadow */
+.fast-badge {
+  border: 1px solid rgba(255, 255, 255, 0.25);
+  box-shadow: 0 8px 16px rgba(29, 148, 195, 0.18);
+}
+
+/* Price styling */
+.price-text {
+  font-size: 1.1rem;
+  letter-spacing: 0.2px;
+}
+
+.best-price {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  padding: 2px 10px;
+  border-radius: 999px;
+  background: rgba(37, 255, 34, 0.12);
+  border: 1px solid rgba(37, 255, 34, 0.35);
+}
+
+/* Action button: more distinctive and “clickable” */
+.action-btn {
+  width: 52px;
+  height: 44px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 12px;
+  background: #25ff22; /* highlight green */
+  color: #0b2b12; /* dark green text for contrast */
+  box-shadow: 0 12px 20px rgba(37, 255, 34, 0.22);
+}
+
+.action-btn:hover {
+  transform: translateY(-1px);
+  box-shadow: 0 16px 26px rgba(37, 255, 34, 0.3);
+}
+
+/* Make icons align nicely everywhere */
+.result-card i.fa-regular,
+.result-card i.fa-solid {
+  vertical-align: -0.08em;
+}
+
+/* Optional: tighten small labels like "Departure/Arrival/Price" */
+.result-card .text-muted.small {
+  letter-spacing: 0.2px;
+}

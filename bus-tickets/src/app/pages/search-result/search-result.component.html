@@ -13,79 +13,80 @@
       </button>
     </div>
   </div>
+  @for (item of searchResult; track $index) {
+    <!-- Result Card -->
+    <div class="card result-card shadow-sm rounded-4 border-0">
+      <div class="card-body">
+        <div class="row align-items-center g-3">
+          <!-- Bus Info -->
+          <div class="col-12 col-md-4">
+            <div class="d-flex align-items-start gap-3">
+              <div class="bus-icon">
+                <i class="fa-solid fa-bus"></i>
+              </div>
 
-  <!-- Result Card -->
-  <div class="card result-card shadow-sm rounded-4 border-0">
-    <div class="card-body">
-      <div class="row align-items-center g-3">
-        <!-- Bus Info -->
-        <div class="col-12 col-md-4">
-          <div class="d-flex align-items-start gap-3">
-            <div class="bus-icon">
-              <i class="fa-solid fa-bus"></i>
-            </div>
+              <div>
+                <div class="fw-semibold fs-6">Express Bus</div>
+                <div class="text-muted small">{{ item.busName }}</div>
 
-            <div>
-              <div class="fw-semibold fs-6">Express Bus</div>
-              <div class="text-muted small">AC Sleeper</div>
+                <div class="d-flex gap-2 mt-2">
+                  <span class="badge rating-badge">
+                    <i class="fa-solid fa-star me-1"></i> 4.5
+                  </span>
 
-              <div class="d-flex gap-2 mt-2">
-                <span class="badge rating-badge">
-                  <i class="fa-solid fa-star me-1"></i> 4.5
-                </span>
-
-                <span class="badge fast-badge">
-                  <i class="fa-solid fa-bolt me-1"></i> Fast
-                </span>
+                  <span class="badge fast-badge">
+                    <i class="fa-solid fa-bolt me-1"></i> Fast
+                  </span>
+                </div>
               </div>
             </div>
           </div>
-        </div>
 
-        <!-- Departure -->
-        <div class="col-6 col-md-2">
-          <div class="text-muted small">Departure</div>
-          <div class="fw-semibold">
-            <i class="fa-regular fa-clock me-2 text-muted"></i>
-            10:00 PM
+          <!-- Total seats -->
+          <div class="col-6 col-md-2">
+            <div class="text-muted small">Total seats</div>
+            <div class="fw-semibold">
+              <i class="fa-solid fa-hourglass-half me-2 text-muted"></i>
+              {{ item.totalSeats }}
+            </div>
           </div>
-        </div>
 
-        <!-- Duration -->
-        <div class="col-6 col-md-2">
-          <div class="text-muted small">Duration</div>
-          <div class="fw-semibold">
-            <i class="fa-solid fa-hourglass-half me-2 text-muted"></i>
-            8h 30m
+          <!-- Departure -->
+          <div class="col-6 col-md-2">
+            <div class="text-muted small">Departure</div>
+            <div class="fw-semibold">
+              <i class="fa-regular fa-clock me-2 text-muted"></i>
+              {{ item.departureTime | date: "shortTime" }}
+            </div>
           </div>
-        </div>
 
-        <!-- Arrival -->
-        <div class="col-6 col-md-2">
-          <div class="text-muted small">Arrival</div>
-          <div class="fw-semibold">
-            <i class="fa-regular fa-clock me-2 text-muted"></i>
-            6:30 AM
+          <!-- Arrival -->
+          <div class="col-6 col-md-2">
+            <div class="text-muted small">Arrival</div>
+            <div class="fw-semibold">
+              <i class="fa-regular fa-clock me-2 text-muted"></i>
+              {{ item.arrivalTime | date: "shortTime" }}
+            </div>
           </div>
-        </div>
 
-        <!-- Price -->
-        <div class="col-6 col-md-1">
-          <div class="text-muted small">Price</div>
-          <div class="fw-bold fs-6 price-text">₹ 800</div>
-          <div class="small fw-semibold best-price">
-            <i class="fa-solid fa-tag me-1"></i>
-            Best Price
+          <!-- Price -->
+          <div class="col-6 col-md-1">
+            <div class="text-muted small">Price</div>
+            <div class="fw-bold fs-6 price-text">₹ {{ item.price }}</div>
+            <div class="small fw-semibold best-price">
+              <i class="fa-solid fa-tag me-1"></i>
+              Best Price
+            </div>
           </div>
-        </div>
 
-        <!-- Action -->
-        <div class="col-12 col-md-1 d-flex justify-content-md-end">
-          <button type="button" class="btn action-btn rounded-3">
-            <i class="fa-solid fa-arrow-right"></i>
-          </button>
+          <!-- Action -->
+          <div class="col-12 col-md-1 d-flex justify-content-md-end">
+            <button type="button" class="btn action-btn rounded-3">
+              <i class="fa-solid fa-arrow-right"></i>
+            </button>
+          </div>
         </div>
       </div>
     </div>
-  </div>
+  }
 </div>

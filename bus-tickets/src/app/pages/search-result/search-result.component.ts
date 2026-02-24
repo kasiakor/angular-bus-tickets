@@ -1,3 +1,4 @@
+import { DatePipe } from '@angular/common';
 import { Component, inject, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { IBusSearchResponse, ISearch } from '../../interfaces/search.interface';
@@ -5,7 +6,7 @@ import { SearchService } from '../../services/search.service';
 
 @Component({
   selector: 'app-search-result',
-  imports: [],
+  imports: [DatePipe],
   templateUrl: './search-result.component.html',
   styleUrl: './search-result.component.css',
 })
@@ -41,7 +42,8 @@ export class SearchResultComponent implements OnInit {
       )
       .subscribe({
         next: (res) => {
-          console.log('search result:', res);
+          this.searchResult = res;
+          console.log('search result:', this.searchResult);
         },
         error: (err) => {
           console.log(err);
