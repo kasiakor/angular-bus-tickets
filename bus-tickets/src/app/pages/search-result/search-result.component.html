@@ -46,7 +46,7 @@
           <div class="col-6 col-md-2">
             <div class="text-muted small">Total seats</div>
             <div class="fw-semibold">
-              <i class="fa-solid fa-hourglass-half me-2 text-muted"></i>
+              <i class="fas fa-chair me-2 text-muted"></i>
               {{ item.totalSeats }}
             </div>
           </div>
@@ -81,7 +81,11 @@
 
           <!-- Action -->
           <div class="col-12 col-md-1 d-flex justify-content-md-end">
-            <button type="button" class="btn action-btn rounded-3">
+            <button
+              type="button"
+              class="btn action-btn rounded-3"
+              (click)="navigateToBooking(item.scheduleId)"
+            >
               <i class="fa-solid fa-arrow-right"></i>
             </button>
           </div>

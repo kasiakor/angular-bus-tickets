@@ -1,6 +1,6 @@
 import { DatePipe } from '@angular/common';
 import { Component, inject, OnInit } from '@angular/core';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { IBusSearchResponse, ISearch } from '../../interfaces/search.interface';
 import { SearchService } from '../../services/search.service';
 
@@ -13,6 +13,7 @@ import { SearchService } from '../../services/search.service';
 export class SearchResultComponent implements OnInit {
   private activatedRoute = inject(ActivatedRoute);
   private searchService = inject(SearchService);
+  private router = inject(Router);
 
   searchObj: ISearch = {
     fromLocationId: '',
@@ -49,5 +50,10 @@ export class SearchResultComponent implements OnInit {
           console.log(err);
         },
       });
+  }
+
+  navigateToBooking(scheduleId: number) {
+    console.log('Navigating to booking with scheduleId:', scheduleId);
+    this.router.navigate(['/book-ticket', scheduleId]);
   }
 }
