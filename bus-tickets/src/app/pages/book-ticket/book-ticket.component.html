@@ -67,64 +67,20 @@
             <hr class="divider mb-4" />
 
             <!-- Seat Layout -->
-            <div class="seat-layout-wrapper">
-              <div class="seat-layout">
-                <!-- Row 1 -->
-                <button class="seat selected">1</button>
-                <button class="seat booked">2</button>
-                <div class="aisle"></div>
-                <button class="seat available">3</button>
-                <button class="seat selected">4</button>
+            <div class="seat-layout">
+              @for (seat of seats; track seat; let i = $index) {
+                <button
+                  class="seat"
+                  [ngClass]="seat.status"
+                  (click)="toggleSeat(seat)"
+                >
+                  {{ seat.number }}
+                </button>
 
-                <!-- Row 2 -->
-                <button class="seat available">5</button>
-                <button class="seat available">6</button>
-                <div class="aisle"></div>
-                <button class="seat booked">7</button>
-                <button class="seat selected">8</button>
-
-                <!-- Row 3 -->
-                <button class="seat available">9</button>
-                <button class="seat booked">10</button>
-                <div class="aisle"></div>
-                <button class="seat available">11</button>
-                <button class="seat selected">12</button>
-
-                <!-- Row 4 -->
-                <button class="seat available">13</button>
-                <button class="seat available">14</button>
-                <div class="aisle"></div>
-                <button class="seat booked">15</button>
-                <button class="seat available">16</button>
-
-                <!-- Row 5 -->
-                <button class="seat available">17</button>
-                <button class="seat available">18</button>
-                <div class="aisle"></div>
-                <button class="seat available">19</button>
-                <button class="seat booked">20</button>
-
-                <!-- Row 6 -->
-                <button class="seat booked">21</button>
-                <button class="seat available">22</button>
-                <div class="aisle"></div>
-                <button class="seat available">23</button>
-                <button class="seat available">24</button>
-
-                <!-- Row 7 -->
-                <button class="seat available">25</button>
-                <button class="seat available">26</button>
-                <div class="aisle"></div>
-                <button class="seat booked">27</button>
-                <button class="seat available">28</button>
-
-                <!-- Last Row -->
-                <div></div>
-                <div></div>
-                <div class="aisle"></div>
-                <button class="seat available">29</button>
-                <button class="seat available">30</button>
-              </div>
+                @if (i % 4 === 1) {
+                  <div class="aisle"></div>
+                }
+              }
             </div>
           </div>
         </div>
@@ -140,15 +96,18 @@
             <div class="mb-4">
               <h5 class="summary-subtitle mb-3">Selected Seats</h5>
               <div class="d-flex flex-wrap gap-2">
-                <span class="seat-badge">Seat 1</span>
-                <span class="seat-badge">Seat 4</span>
-                <span class="seat-badge">Seat 8</span>
-                <span class="seat-badge">Seat 12</span>
+                @if (selectedSeats.length === 0) {
+                  <span class="text-muted">No seats selected</span>
+                } @else {
+                  @for (item of selectedSeats; track $index) {
+                    <span class="seat-badge">{{ item }}</span>
+                  }
+                }
               </div>
             </div>
 
             <!-- Fare Details -->
-            <div class="mb-4">
+            <!-- <div class="mb-4">
               <h5 class="summary-subtitle mb-3">Fare Details</h5>
 
               <div class="fare-row">
@@ -168,7 +127,7 @@
                   }}</span
                 >
               </div>
-            </div>
+            </div> -->
 
             <!-- Contact Details -->
             <div>

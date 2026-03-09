@@ -16,12 +16,16 @@ export class BookTicketComponent implements OnInit {
 
   busSchedule: IBusScheduleResponse | null = null;
   scheduleId: number = 0;
+  seatsToBook: number = 1;
+  seats: any;
+  selectedSeats: number[] = [];
 
   ngOnInit(): void {
     this.activatedRoute.params.subscribe((params) => {
       console.log('params:', params);
       this.scheduleId = Number(params['scheduleId']);
     });
+
     this.loadBusSchedule();
   }
 
@@ -29,11 +33,26 @@ export class BookTicketComponent implements OnInit {
     this.scheduleService.getBusScheduleById(this.scheduleId).subscribe({
       next: (res) => {
         this.busSchedule = res;
+        this.seatsToBook = res.totalSeats;
+        this.seats = Array.from({ length: 20 }, (_, i) => ({
+          number: i + 1,
+          status: 'available',
+        }));
         console.log('Bus scheduleId response:', res);
       },
       error: (err) => {
         console.log(err);
       },
     });
+  }
+
+  toggleSeat(seat: any) {
+    if (this.selectedSeats.includes(seat.number)) {
+      this.selectedSeats = this.selectedSeats.filter((s) => s !== seat.number);
+      seat.status = 'available';
+    } else {
+      this.selectedSeats.push(seat.number);
+      seat.status = 'selected';
+    }
   }
 }
