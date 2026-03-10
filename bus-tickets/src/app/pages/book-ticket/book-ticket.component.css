@@ -207,6 +207,15 @@
 }
 
 /* Form */
+
+.form-outline {
+  background: #2196f3;
+  border: 1px solid #e5e7eb;
+  border-radius: 12px;
+  padding: 24px 28px;
+  margin: 0;
+}
+
 .custom-label {
   font-weight: 600;
   color: var(--text-dark);

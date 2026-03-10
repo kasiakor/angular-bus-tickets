@@ -1,12 +1,14 @@
 import { CommonModule, DatePipe } from '@angular/common';
 import { Component, inject, OnInit } from '@angular/core';
+import { FormsModule } from '@angular/forms';
 import { ActivatedRoute } from '@angular/router';
+import { IBusBookingPassenger } from '../../interfaces/bus.interface';
 import { IBusScheduleResponse } from '../../interfaces/schedule.interface';
 import { ScheduleService } from '../../services/schedule.service';
 
 @Component({
   selector: 'app-book-ticket',
-  imports: [DatePipe, CommonModule],
+  imports: [DatePipe, CommonModule, FormsModule],
   templateUrl: './book-ticket.component.html',
   styleUrl: './book-ticket.component.css',
 })
@@ -19,6 +21,7 @@ export class BookTicketComponent implements OnInit {
   seatsToBook: number = 1;
   seats: any;
   selectedSeats: number[] = [];
+  passengers: IBusBookingPassenger[] = [];
 
   ngOnInit(): void {
     this.activatedRoute.params.subscribe((params) => {
@@ -34,7 +37,7 @@ export class BookTicketComponent implements OnInit {
       next: (res) => {
         this.busSchedule = res;
         this.seatsToBook = res.totalSeats;
-        this.seats = Array.from({ length: 20 }, (_, i) => ({
+        this.seats = Array.from({ length: this.seatsToBook }, (_, i) => ({
           number: i + 1,
           status: 'available',
         }));
@@ -54,5 +57,17 @@ export class BookTicketComponent implements OnInit {
       this.selectedSeats.push(seat.number);
       seat.status = 'selected';
     }
+    this.buildPassengers(); // rebuild passenger forms
+  }
+
+  buildPassengers() {
+    this.passengers = this.selectedSeats.map((seat) => ({
+      passengerId: 0,
+      bookingId: 0,
+      passengerName: '',
+      age: 0,
+      gender: '',
+      seatNo: seat,
+    }));
   }
 }
