@@ -130,6 +130,7 @@
                         placeholder="Enter age"
                         [(ngModel)]="item.age"
                         [name]="'age' + item.seatNo"
+                        min="0"
                       />
                     </div>
                     <div class="mb-4">
@@ -162,9 +163,9 @@
                 </div>
               }
 
-              <button class="btn proceed-btn w-100">
+              <button class="btn proceed-btn w-100" (click)="onBooking()">
                 <i class="fa-regular fa-credit-card me-2"></i>
-                Proceed to Payment
+                Booki Ticket
               </button>
             </div>
           </div>
